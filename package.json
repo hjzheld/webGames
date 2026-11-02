@@ -5,10 +5,10 @@
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0 --port 3000",
     "build": "next build",
-    "cf:build": "opennextjs-cloudflare build",
-    "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-    "start": "next start",
+    "cf:build": "npm run build",
+    "cf:preview": "npm run build && wrangler pages dev out",
+    "cf:deploy": "npm run build && wrangler pages deploy out --project-name mongle-play-lounge",
+    "start": "wrangler pages dev out",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "test": "vitest run",
@@ -26,7 +26,6 @@
     "sass": "^1.89.0"
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "^1.20.14",
     "@playwright/test": "^1.55.0",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
@@ -42,9 +41,6 @@
   "overrides": {
     "next": {
       "postcss": "^8.5.32"
-    },
-    "@node-minify/core": {
-      "glob": "^10.5.0"
     }
   },
   "type": "module"

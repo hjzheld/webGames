@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { findGame, games } from "@/lib/arcade/catalog";
 import GameScreen from "@/components/arcade/GameScreen";
+export const dynamicParams = false;
 export function generateStaticParams() {
   return games.map((game) => ({ game: game.id }));
 }

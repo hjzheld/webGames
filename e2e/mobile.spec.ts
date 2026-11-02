@@ -30,10 +30,10 @@ for (const width of [320, 390, 480, 768]) {
         .toBe(true);
       if (route === "/" && width <= 480) {
         const first = await page
-          .locator("a[href='/play/weeding']")
+          .locator("a[href='/play/weeding/'], a[href='/play/weeding']")
           .boundingBox();
         const second = await page
-          .locator("a[href='/play/snacks']")
+          .locator("a[href='/play/snacks/'], a[href='/play/snacks']")
           .boundingBox();
         expect(second!.y).toBeGreaterThanOrEqual(first!.y + first!.height);
       }

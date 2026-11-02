@@ -5,7 +5,8 @@ test("removed legacy routes are not exposed", async ({ request }) => {
   for (const path of ["/crane", "/admin", "/api/plays/start"]) {
     expect((await request.get(path)).status()).toBe(404);
   }
-  expect((await request.post("/api/plays/start", { data: {} })).status()).toBe(404);
+  // Pages only serves static GET/HEAD assets; POST has no API handler.
+  expect((await request.post("/api/plays/start", { data: {} })).status()).toBe(405);
 });
 test("hub opens all four games and the separate photo experience", async ({
   page,
@@ -21,7 +22,7 @@ test("hub opens all four games and the separate photo experience", async ({
     .getByRole("link");
   await expect(links).toHaveCount(4);
   for (const id of ["weeding", "snacks", "training", "memory"]) {
-    await page.locator(`a[href='/play/${id}']`).click();
+    await page.locator(`a[href='/play/${id}/'], a[href='/play/${id}']`).click();
     await expect(
       page.getByRole("button", { name: "놀이 시작하기" }),
     ).toBeVisible();
@@ -87,7 +88,7 @@ test("snacks really fall, collide with the basket, and respond to keys", async (
   await expect(basket).not.toHaveAttribute("style", bothHeld!);
   await page.keyboard.up("ArrowLeft");
   await page.getByRole("link", { name: "← 놀이 고르기" }).click();
-  await page.locator("a[href='/play/snacks']").click();
+  await page.locator("a[href='/play/snacks/'], a[href='/play/snacks']").click();
   await expect(page.getByTestId("score")).toHaveText("000");
 });
 test("training rewards a target and prevents a second hit", async ({
