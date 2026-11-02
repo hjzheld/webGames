@@ -1,0 +1,17 @@
+node_modules/
+.next/
+.env*
+!.env.example
+*.tsbuildinfo
+playwright-report/
+test-results/
+
+.local-postgres/
+artifacts/
+
+.next-dev/
+.open-next/
+.wrangler/
+.dev.vars*
+next-env.d.ts
+/scripts.zip
