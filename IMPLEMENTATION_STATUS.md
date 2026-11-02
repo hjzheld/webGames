@@ -7,7 +7,18 @@
 - 공통 게임 상태·타이머·점수, 모바일 CSS 통합.
 - 사진 PNG 저장 시 외부 이미지를 내장해 캐릭터 누락 방지.
 - 간식의 실제 요소 크기 기반 판정·키 상태·화면 경계 보정.
-- Cloudflare Workers 빌드 및 정적 페이지 캐시 설정.
+- Cloudflare Pages 정적 내보내기 및 정적 자산 캐시 설정.
+
+## Pages 전환 — 2026-11-02
+
+- Next.js `output: "export"`와 폴더별 `index.html` 출력을 적용했습니다.
+- 게임 경로 4개를 사전 생성하고 정의되지 않은 경로는 404로 처리합니다.
+- OpenNext Workers 어댑터와 서비스 바인딩을 제거했습니다.
+- 빌드 결과는 `out/`이며 Git 추적에서 제외합니다.
+- 로컬 미리보기와 E2E는 `wrangler pages dev out`을 사용합니다.
+- 정적 서버에서 정의되지 않은 페이지의 GET은 404, 지원하지 않는 POST는 405로 확인합니다.
+- 실제 계정 배포는 아직 수행하지 않았습니다. GitHub Pages가 아닌 Cloudflare Pages에 저장소를 연결합니다.
+- 정적 `out/` 빌드, 타입·린트, 단위 테스트 7개, Pages 로컬 서버의 브라우저 시나리오 18개를 통과했습니다.
 
 ## 제거한 이전 기능
 
@@ -18,7 +29,7 @@
 
 정리 후 타입·린트·단위 테스트 7개, PC/키오스크 및 모바일 브라우저 시나리오 18개를 통과했습니다.
 삭제한 인형뽑기·관리자·API 경로의 GET/POST 404 응답도 검사했습니다.
-프로덕션 및 Cloudflare Worker 번들 생성이 성공했습니다.
+이전 Workers 구성에서는 프로덕션 및 Worker 번들 생성을 확인했습니다. 현재 배포 설정은 위 Pages 전환 항목을 따릅니다.
 초기 리소스 로딩으로 시간 초과한 메인 진입 검사는 DOM 준비와 실제 UI 확인을 기준으로 변경해 재검증했습니다.
 
 `npm run typecheck`, `npm run lint`, `npm test`, `npm run build`, `npm run test:e2e`, `npm run cf:build`.

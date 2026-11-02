@@ -54,5 +54,5 @@ npm run test:e2e
 
 ## 배포
 
-Cloudflare Workers 설정을 포함합니다. `CLOUDFLARE_DEPLOY.md`를 참고하세요.
+Cloudflare Pages 정적 배포 설정을 포함합니다. 빌드 명령은 `npm run build`, 출력 폴더는 `out`입니다. `CLOUDFLARE_DEPLOY.md`를 참고하세요.
 공유 이미지의 절대 주소를 위해 빌드 환경 변수 `NEXT_PUBLIC_SITE_URL`을 실제 HTTPS 주소로 설정합니다.
