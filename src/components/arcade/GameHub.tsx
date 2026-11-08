@@ -170,8 +170,7 @@ export default function GameHub() {
               <div className={styles.cardTop}>
                 <span>GAME {game.number}</span>
                 <span>
-                  <Clock3 size={13} strokeWidth={1.8} /> 약{" "}
-                  {Math.max(1, Math.ceil(game.duration / 60))}분
+                  <Clock3 size={13} strokeWidth={1.8} /> {game.duration}초
                 </span>
               </div>
               <div className={styles.cardArt}>

@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { siteUrl } from "@/lib/metadata";
 import "@fontsource/gowun-dodum/400.css";
 import "@fontsource/jua/400.css";
 import "./globals.scss";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
+  metadataBase: siteUrl,
   title: "몽글몽글 놀이터 — 작은 친구들의 플레이 라운지",
   description:
     "다소니, 바오, 나니, 푸실과 함께 즐기는 팝업스토어 대기 키오스크 게임 라운지.",

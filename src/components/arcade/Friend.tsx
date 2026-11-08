@@ -6,6 +6,9 @@ const imageByKind: Record<FriendType, string> = {
   bao: "/characters/bao.webp",
   nani: "/characters/nani.webp",
 };
+const nameByKind: Record<FriendType, string> = {
+  dasoni: "다소니", bao: "바오", nani: "나니", pusil: "푸실",
+};
 
 /** Uses an individual transparent character asset while preserving the SVG API. */
 export default function Friend({
@@ -24,7 +27,7 @@ export default function Friend({
       height={size ? size * 1.05 : undefined}
       viewBox="0 0 200 210"
       role="img"
-      aria-label={kind}
+      aria-label={nameByKind[kind]}
       style={{ display: "block" }}
     >
       <image
